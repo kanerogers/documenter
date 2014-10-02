@@ -1,4 +1,5 @@
 (ns documenter.core
+  (:require [clojure.data.json :as json])
   (:gen-class))
 
 (defn -main
@@ -6,6 +7,12 @@
   [& args]
   (println "Hello, World!"))
 
-(defn derp
-  []
-  "help me")
+(defn listFiles
+  [path]
+  (file-seq (clojure.java.io/file path)))
+
+(defn parseFile
+  [file]
+  (json/read-str (slurp file)
+                :key-fn keyword))
+
