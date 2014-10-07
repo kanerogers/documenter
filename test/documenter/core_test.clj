@@ -19,19 +19,14 @@
 (def json
   {:method "POST",
    :url "/test/URL",
-   :headers {:some "header", :other "header"},
+   :requestHeaders {:some "header", :other "header"},
    :description "I think so",
-   :request "COME ON YES SAY YEAH",
-   :response "okay yeah alright"})
+   :requestBody "COME ON YES SAY YEAH",
+   :responseCode 200,
+   :responseBody "okay yeah alright"})
 
 (def html
-    "<html><body><h1>POST /test/URL</h1> <h2>Description</h2> <p>I think so</p> <h2>Example Request</h2> <h3>Headers</h3> <code>other: header\nsome: header</code> <h3>Body</h3> <code>COME ON YES SAY YEAH</code>
-    <h2>Example Response</h2>
-    <code>
-      okay yeah alright
-    </code>
-    </body>
-    </html>")
+    "<html><body><h1>POST /test/URL</h1> <h2>Description</h2> <p>I think so</p> <h2>Example Request</h2> <h3>Headers</h3> <code>other: header\nsome: header</code> <h3>Body</h3> <code>COME ON YES SAY YEAH</code> <h2>Example Response</h2> <h3>Response Code</h3> <code>200</code> <h3>Response Body</h3> <code>okay yeah alright</code></body></html>")
 
 (deftest generate-html
   (testing "Generating some HTML"

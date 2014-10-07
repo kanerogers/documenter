@@ -40,4 +40,13 @@
       (code 
         (join "\n" 
           (clj-map parseHeader 
-            (:headers jsonData)))))))
+            (:requestHeaders jsonData))))
+      (h3 "Body")
+      (code (:requestBody jsonData))
+      (h2 "Example Response")
+      (h3 "Response Code")
+      (code (str (:responseCode jsonData)))
+      (h3 "Response Body")
+      (code (:responseBody jsonData)))))
+      
+
