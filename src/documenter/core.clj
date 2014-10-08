@@ -6,10 +6,6 @@
 
 (use '[clojure.string :only (join split)])
 
-(defn -main
-  "I don't do a whole lot ... yet."
-  [& args]
-  (println "Hello, World!"))
 
 (defn listFiles
   [path]
@@ -17,6 +13,7 @@
 
 (defn parseFile
   [file]
+  (println (str "Going to read \t" file))
   (json/read-str (slurp file)
                 :key-fn keyword))
 
@@ -48,5 +45,13 @@
       (code (str (:responseCode jsonData)))
       (h3 "Response Body")
       (code (:responseBody jsonData)))))
-      
 
+(defn -main
+  "I don't do a whole lot ... yet."
+  [& args]
+  (def filePath (first args))
+  (println (str "Going to parse all the files in " filePath))
+  (def fileList (listFiles filePath))
+  (println (str "Here are all the files in " filePath ":\t" filePath))
+  (println 
+    (clj-map parseFile fileList)))
